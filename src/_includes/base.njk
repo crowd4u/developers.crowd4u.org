@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% include "./partials/opengraph.njk" %}
-    <title>{% block title %}{% endblock %} - 融合知能デザイン研究室 開発ブログ</title>
+    <title>{% block title %}{{ title }}{% endblock %} - 融合知能デザイン研究室 技術ブログ</title>
 </head>
 <body>
     <header>
@@ -14,6 +14,7 @@
     </header>
     <main>
         {% block main %}
+            {{ content | safe }}
         {% endblock %}
     </main>
     <footer>
