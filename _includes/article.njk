@@ -1,0 +1,22 @@
+{% extends "./base.njk" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+<article>
+    <h1>{{ title }}</h1>
+    <aside>
+        <p>
+            公開: <time datetime="{{ date }}" itemprop="startDate">{{ date }}</time>
+        </p>
+        <p>
+            著者: {{ author }}
+        </p>
+    </aside>
+    <div>
+        {{ content | safe }}
+    </div>
+</article>
+{% endblock %}
