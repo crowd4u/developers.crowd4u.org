@@ -1,0 +1,12 @@
+---
+permalink: "/tags/"
+layout: base
+---
+<article>
+    <h1>タグ一覧</h1>
+    {% for tag in collections.posts | getAllTags | filterTagList %}
+    <ul>
+        <li><a href="/tags/{{ tag | slugify }}">{{ tag }}</a></li>
+    </ul>
+    {% endfor %}
+</article>

@@ -17,7 +17,8 @@
         <div>
             tag: 
             {% for tag in tags %}
-            <span>{{ tag if tag !== "posts" }}</span>
+            {% set tag_path = "/tags/" + (tag | slugify) %}
+            <a href='{{ tag_path | htmlBaseUrl }}'>{{ tag if tag !== "posts" }}</a>
             {% endfor %}
         </div>
     </aside>
