@@ -9,11 +9,17 @@
     <h1>{{ title }}</h1>
     <aside>
         <p>
-            公開: <time datetime="{{ date }}" itemprop="startDate">{{ date }}</time>
+            公開: <time datetime="{{ date }}">{{ date }}</time>
         </p>
         <p>
             著者: {{ author }}
         </p>
+        <div>
+            tag: 
+            {% for tag in tags %}
+            <span>{{ tag if tag !== "posts" }}</span>
+            {% endfor %}
+        </div>
     </aside>
     <div>
         {{ content | safe }}
