@@ -1,0 +1,24 @@
+---
+eleventyExcludeFromCollections: true
+layout: base
+title: "トップページ"
+ogp_type: "website"
+eleventyImport:
+  collections: ["posts"]
+---
+
+<article>
+    <h1>最新記事 10件</h1>
+    {% for post in collections.posts | reverse %}
+    {% if loop.index <= 10 %}
+    <article>
+        <section>
+            <h2>
+                <a href="{{post.url}}">{{ post.data.title }}</a>
+            </h2>
+            <div>{{ post.data.author }}</div>
+        </section>
+    </article>
+    {% endif %}
+    {% endfor %}
+</article>
