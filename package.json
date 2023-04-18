@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy --input=. --output=public",
-    "dev": "eleventy --serve --input=. --output=public"
+    "build": "eleventy",
+    "dev": "eleventy --serve"
   },
   "keywords": [],
   "author": "",
