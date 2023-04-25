@@ -9,8 +9,8 @@ pagination:
     - tagList
     - post
   addAllPagesToCollections: true
-permalink: "/tags/{{ tag | slugify }}/"
-layout: base
+permalink: "/tag/{{ tag | slugify }}/"
+layout: article-list
 ogp_type: "webpage"
 eleventyComputed:
   title: "タグ「{{ tag }}」を含む記事一覧"
@@ -19,12 +19,7 @@ eleventyComputed:
 <article>
     <h1>タグ「{{ tag }}」を含む記事一覧</h1>
     {% for post in collections[tag] %}
-    <article>
-        <h2>
-            <a href="{{post.url}}">{{ post.data.title }}</a>
-        </h2>
-        <p>{{ post.data.author }}</p>
-    </article>
+    {% include './_includes/partials/entry.njk' %}
     {% endfor %}
     <a href='{{ "/tags" | htmlBaseUrl }}'>タグ一覧をみる</a>
 </article>

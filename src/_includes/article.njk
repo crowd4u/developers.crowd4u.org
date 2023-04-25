@@ -1,29 +1,37 @@
 {% extends "./base.njk" %}
 
+{% block head %}
+<link rel="stylesheet" href='{{ "/assets/css/article.css" | htmlBaseUrl }}'>
+<script defer="defer" src='{{ "/assets/js/highlight.min.js" | htmlBaseUrl }}'></script>
+{% endblock %}
+
 {% block title %}
 {{ title }}
 {% endblock %}
 
 {% block main %}
-<article>
-    <h1>{{ title }}</h1>
-    <aside>
-        <p>
-            公開: <time datetime="{{ date }}">{{ date }}</time>
-        </p>
-        <p>
-            著者: {{ author }}
-        </p>
-        <div>
-            tag: 
-            {% for tag in tags %}
-            {% set tag_path = "/tags/" + (tag | slugify) %}
-            <a href='{{ tag_path | htmlBaseUrl }}'>{{ tag if tag !== "posts" }}</a>
-            {% endfor %}
+<article class="post-single">
+    <header class="post-header">
+        <h1 class="post-title">{{ title }}</h1>
+        <div class="post-meta">
+            <time datetime="{{ date }}">{{ date }}</time>
+            <div>
+                {% author_link author, author %}
+            </div>
+            <div>
+                {% for tag in tags %}
+                {% if tag !== "posts" %}
+                    {% tag_link tag %}
+                {% endif %}
+                {% endfor %}
+            </div>
         </div>
-    </aside>
-    <div>
+    </header>
+    <div class="toc"></div>
+    <div class="post-content">
         {{ content | safe }}
     </div>
+    <footer class="post-footer">
+    </footer>
 </article>
 {% endblock %}

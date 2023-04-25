@@ -1,6 +1,6 @@
 ---
 eleventyExcludeFromCollections: true
-layout: base
+layout: article-list
 title: "トップページ"
 ogp_type: "website"
 eleventyImport:
@@ -10,15 +10,8 @@ eleventyImport:
 <article>
     <h1>最新記事 10件</h1>
     {% for post in collections.posts | reverse %}
-    {% if loop.index <= 10 %}
-    <article>
-        <section>
-            <h2>
-                <a href="{{post.url}}">{{ post.data.title }}</a>
-            </h2>
-            <div>{{ post.data.author }}</div>
-        </section>
-    </article>
-    {% endif %}
+        {% if loop.index <= 10 %}
+            {% include './_includes/partials/entry.njk' %}
+        {% endif %}
     {% endfor %}
 </article>
