@@ -1,0 +1,23 @@
+---
+layout: article-list
+pagination:
+   data: authors
+   size: 1
+   alias: author
+permalink: "/authors/{{author.id | slugify}}/"
+eleventyComputed:
+   title: "{{author.name}}"
+---
+
+<article>
+    <h1>{{ author.name }}</h1>
+    <p>{{ author.description }}</p>
+    <ul>
+        {% for link in author.links %}
+            <li><a href="{{link.link}}">{{link.name}}</a></li>
+        {% endfor %}
+    </ul>
+    {% for post in collections.posts | reverse | filterAuthor(author.id) %}
+    {% include './_includes/partials/entry.njk' %}
+    {% endfor %}
+</article>
