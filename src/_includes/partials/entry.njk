@@ -6,8 +6,8 @@
         <p>{{ content | safe }}</p>
     </div>
     <footer class="entry-footer">
-        <time datetime='{{ post.data.date }}'>{{ post.data.date }}</span>
-        {% author_link post.data.author, post.data.author %}
+        <time datetime='{{ post.data.date.toISOString() }}'>{{ post.data.date | readableDate }}</span>
+        {% author_link post.data.author, authors[post.data.author]["name"] %}
     </footer>
     <a href='{{ post.url }}' class="entry-link"></a>
 </article>
