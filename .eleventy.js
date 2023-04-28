@@ -19,7 +19,7 @@ module.exports = function(eleventyConfig) {
     });
 
     eleventyConfig.addFilter("filterAuthor", (collections, author) => {
-        collections.filter(post => post.data.author === author)
+        return collections.filter(post => post.data.author === author);
     });
 
     eleventyConfig.addShortcode("author_link", (id, text) => {
