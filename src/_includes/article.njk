@@ -25,8 +25,8 @@
                 <div class="post-meta">
                     <time datetime="{{ date.toISOString() }}">{{ date | readableDate }}</time>
                     <div class="post-author">
-                        <img src='{{ "/assets/img/avatars/" + author + ".png" | htmlBaseUrl }}' height="24"/>
-                        {% author_link author, author %}
+                        <img src='{{ "/assets/img/avatars/" + author + ".png" | url }}' height="24"/>
+                        {% author_link author, authors[author].name %}
                     </div>
                     <ul class="post-tags">
                         {% for tag in tags %}
