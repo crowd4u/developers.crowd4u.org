@@ -3,7 +3,8 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
-    eleventyConfig.addPassthroughCopy("posts/**/*.png");
+    eleventyConfig.addPassthroughCopy("**/*.png");
+    //eleventyConfig.addPassthroughCopy("assets/img/**/*.png");
 
     eleventyConfig.addFilter("getAllTags", collection => {
         let tagset = new Set();
