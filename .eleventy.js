@@ -1,7 +1,9 @@
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 module.exports = function(eleventyConfig) {
-    eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+    eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
+        baseHref: (process.env.NODE_ENV === "production" ? "https://developers.crowd4u.org" : "http://localhost:8080")
+    });
 
     eleventyConfig.addPassthroughCopy("**/*.png");
     //eleventyConfig.addPassthroughCopy("assets/img/**/*.png");
