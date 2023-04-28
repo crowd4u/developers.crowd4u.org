@@ -1,37 +1,53 @@
-{% extends "./base.njk" %}
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='{{ "/assets/css/base.css" | htmlBaseUrl }}'>
 
-{% block head %}
-<link rel="stylesheet" href='{{ "/assets/css/article.css" | htmlBaseUrl }}'>
-<script defer="defer" src='{{ "/assets/js/highlight.min.js" | htmlBaseUrl }}'></script>
-{% endblock %}
-
-{% block title %}
-{{ title }}
-{% endblock %}
-
-{% block main %}
-<article class="post-single">
-    <header class="post-header">
-        <h1 class="post-title">{{ title }}</h1>
-        <div class="post-meta">
-            <time datetime="{{ date }}">{{ date }}</time>
-            <div>
-                {% author_link author, author %}
-            </div>
-            <div>
-                {% for tag in tags %}
-                {% if tag !== "posts" %}
-                    {% tag_link tag %}
-                {% endif %}
-                {% endfor %}
-            </div>
-        </div>
+    {% include "./partials/opengraph.njk" %}
+    {% block head %}
+    <link rel="stylesheet" href='{{ "/assets/css/article.css" | htmlBaseUrl }}'>
+    <script defer="defer" src='{{ "/assets/js/highlight.min.js" | htmlBaseUrl }}'></script>
+    {% endblock %}
+    <title>{% block title %}{{ title }}{% endblock %} - 融合知能デザイン研究室 技術ブログ</title>
+</head>
+<body id="top">
+    <header class="header">
+        {% include "./partials/navbar.njk" %}
     </header>
-    <div class="toc"></div>
-    <div class="post-content">
-        {{ content | safe }}
-    </div>
-    <footer class="post-footer">
+    <main class="main">
+        {% block main %}
+        <article class="post-single">
+            <header class="post-header">
+                <h1 class="post-title">{{ title }}</h1>
+                <div class="post-meta">
+                    <time datetime="{{ date.toISOString() }}">{{ date | readableDate }}</time>
+                    <div class="post-author">
+                        <img src='{{ "/assets/img/avatars/" + author + ".png" | htmlBaseUrl }}' height="24"/>
+                        {% author_link author, author %}
+                    </div>
+                    <ul class="post-tags">
+                        {% for tag in tags %}
+                        {% if tag !== "posts" %}
+                            <li class="post-tag">{% tag_link tag %}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </header>
+            <div class="toc"></div>
+            <div class="post-content">
+                {{ content | safe }}
+            </div>
+            <footer class="post-footer">
+            </footer>
+        </article>
+        {% endblock %}
+    </main>
+    <footer class="footer">
+        <p id="copyright"></p>
     </footer>
-</article>
-{% endblock %}
+</body>
+</html>
