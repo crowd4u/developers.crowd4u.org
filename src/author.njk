@@ -4,20 +4,21 @@ pagination:
    data: authors
    size: 1
    alias: author
-permalink: "/authors/{{author.id | slugify}}/"
+permalink: "/author/{{author}}/"
 eleventyComputed:
-   title: "{{author.name}}"
+   title: "{{authors[author].name}}"
 ---
 
 <article>
-    <h1>{{ author.name }}</h1>
-    <p>{{ author.description }}</p>
+    <h1>{{ authors[author]["name"] }}</h1>
+    <img src='{{ "/assets/img/avatars/" + author + ".png" | htmlBaseUrl }}' alt="" width="180">
+    <p>{{ authors[author]["description"] }}</p>
     <ul>
-        {% for link in author.links %}
+        {% for link in authors[author].links %}
             <li><a href="{{link.link}}">{{link.name}}</a></li>
         {% endfor %}
     </ul>
-    {% for post in collections.posts | reverse | filterAuthor(author.id) %}
-    {% include './_includes/partials/entry.njk' %}
+    {% for post in collections.posts | reverse | filterAuthor(author) %}
+        {% include './_includes/partials/entry.njk' %}
     {% endfor %}
 </article>

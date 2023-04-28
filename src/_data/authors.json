@@ -1,9 +1,9 @@
-[
-    {
+{
+    "23akei": {
         "name": "あけい",
         "id": "23akei"
     },
-    {
+    "eniehack": {
         "name": "Nakaya",
         "id": "eniehack",
         "description": "hello",
@@ -18,7 +18,7 @@
             }
         ]
     },
-    {
+    "gild": {
         "name": "ギルド",
         "id": "gild",
         "description": "もうすぐB4になる予定のギルドです。つよつよエンジニアになりたい。",
@@ -33,9 +33,9 @@
             }
         ]
     },
-    {
+    "notch_man": {
         "name": "notch_man",
         "id": "notch_man",
         "url": "https://twitter.com/notch_man8600/"
     }    
-]
+}
