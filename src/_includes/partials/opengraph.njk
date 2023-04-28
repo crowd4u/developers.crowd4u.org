@@ -1,11 +1,7 @@
 <meta property="og:url" content="{{ page.url | htmlBaseUrl }}" />
-{% if page.ogp_type !== undefined %}
-<meta property="og:type" content="{{ page.ogp_type }}" />
-{% else %}
-<meta property="og:type" content="article" />
-{% endif %}
-<meta property="og:title" content="{{ page.title }} - 融合知能デザイン研究室 開発ブログ" />
+<meta property="og:type" content="{{ ogp_type | default('article') }}" />
+<meta property="og:title" content="{{ title }}" />
 <meta property="og:description" content="{{ ogp.description }}" />
 <meta property="og:site_name" content="{{ ogp.site_name }}" />
-<meta property="og:image" content="{{ ogp.image | htmlBaseUrl }}" />
-<meta property="twitter:card" content="summary">
+<meta property="og:image" content="{{ ogp.image | htmlBaseUrl}}" />
+<meta property="twitter:card" content="summary"/>
