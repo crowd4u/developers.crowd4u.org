@@ -22,6 +22,10 @@ module.exports = function(eleventyConfig) {
         return collections.filter(post => post.data.author === author);
     });
 
+    eleventyConfig.addFilter("readableDate", (date) => {
+        return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+    })
+
     eleventyConfig.addShortcode("author_link", (id, text) => {
         let path = "/author/" + eleventyConfig.getFilter("slugify")(id);
         return `<a href="${eleventyConfig.getFilter("htmlBaseUrl")(path)}">${text}</a>`;
