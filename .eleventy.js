@@ -2,6 +2,7 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const pluginTOC = require("eleventy-plugin-toc");
+const pluginRSS = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
@@ -11,6 +12,7 @@ module.exports = function(eleventyConfig) {
         tags: ["h2", "h3", "h4"],
         wrapper: "aside"
     });
+    eleventyConfig.addPlugin(pluginRSS);
 
     eleventyConfig.setLibrary(
         "md",
@@ -39,6 +41,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("readableDate", (date) => {
         return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
     })
+
+    eleventyConfig.addFilter("dateToRfc3339", pluginRSS.dateToRfc3339);
 
     eleventyConfig.addShortcode("author_link", (id, text) => {
         let path = "/author/" + eleventyConfig.getFilter("slugify")(id);
