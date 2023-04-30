@@ -4,7 +4,9 @@ const markdownItAnchor = require("markdown-it-anchor");
 const pluginTOC = require("eleventy-plugin-toc");
 
 module.exports = function(eleventyConfig) {
-    eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+    eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
+        baseHref: (process.env.NODE_ENV === "production" ? "https://developers.crowd4u.org" : "http://localhost:8080")
+    });
     eleventyConfig.addPlugin(pluginTOC, {
         tags: ["h2", "h3", "h4"],
         wrapper: "aside"
