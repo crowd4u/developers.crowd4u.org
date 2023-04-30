@@ -37,7 +37,7 @@
                     </ul>
                 </div>
             </header>
-            <div class="toc"></div>
+            {{ content | toc | safe }}
             <div class="post-content">
                 {{ content | safe }}
             </div>

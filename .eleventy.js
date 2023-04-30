@@ -1,9 +1,21 @@
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
+const pluginTOC = require("eleventy-plugin-toc");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
         baseHref: (process.env.NODE_ENV === "production" ? "https://developers.crowd4u.org" : "http://localhost:8080")
     });
+    eleventyConfig.addPlugin(pluginTOC, {
+        tags: ["h2", "h3", "h4"],
+        wrapper: "aside"
+    });
+
+    eleventyConfig.setLibrary(
+        "md",
+        markdownIt().use(markdownItAnchor)
+    );
 
     eleventyConfig.addPassthroughCopy("**/*.png");
     //eleventyConfig.addPassthroughCopy("assets/img/**/*.png");
