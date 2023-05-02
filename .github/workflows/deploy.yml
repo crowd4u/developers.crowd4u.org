@@ -1,0 +1,51 @@
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+      
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "./public"
+
+  deploy:
+     if: ${{ github.ref == 'refs/heads/main' }}
+     needs: build
+
+     permissions:
+       pages: write
+       id-token: write
+   
+     environment:
+       name: github-pages
+       url: https://dev-blog.crowd4u.org
+   
+     runs-on: ubuntu-22.04
+   
+     steps:
+       - uses: actions/deploy-pages@v1
