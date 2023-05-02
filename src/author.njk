@@ -12,7 +12,7 @@ eleventyComputed:
 
 <article>
     <h1>{{ authors[author]["name"] }}</h1>
-    <img src='{{ "/assets/img/avatars/" + author + ".png" | htmlBaseUrl }}' alt="" width="180">
+    <img src='{{ ("/assets/img/avatars/" + authors[author].id + ".png") | url }}' alt="" width="180">
     <p>{{ authors[author]["description"] }}</p>
     <ul>
         {% for link in authors[author].links %}
