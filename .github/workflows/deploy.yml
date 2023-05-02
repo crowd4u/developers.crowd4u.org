@@ -43,7 +43,7 @@ jobs:
    
      environment:
        name: github-pages
-       url: https://dev-blog.crowd4u.org
+       url: https://developers.crowd4u.org
    
      runs-on: ubuntu-22.04
    
