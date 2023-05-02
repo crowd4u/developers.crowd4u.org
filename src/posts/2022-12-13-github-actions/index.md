@@ -49,9 +49,9 @@ name: hugo-deploy
 
 ```yaml
 on:
-	push:
-		branches:
-			- master
+  push:
+  	branches:
+  	  - master
 ```
 
 `branches` 以下を省略すれば，全てのブランチにpushされた際に発火させることができます．
@@ -71,13 +71,13 @@ on:
 
 ```yaml
 jobs:
-	deploy-hugo:
-		runs-on: ubuntu-latest
-		steps:
-			- uses: actions/checkout@v3
-				with:
-					submodules: true
-					fetch-depatch: 0
+  deploy-hugo:
+  	runs-on: ubuntu-latest
+  	steps:
+  	  - uses: actions/checkout@v3
+  	  	with:
+  	  	  submodules: true
+  	  	  fetch-depatch: 0
 ```
 
 `jobs` 内に `deploy-hugo` という名前のjobを定義しました．　`runs-on` でjobを実行する仮想マシン（ランナー）の種類を選びます．ubuntu以外にもwindows serverやmacosが選べるみたいです．
@@ -93,13 +93,13 @@ jobs:
 ## 1. Hugoのビルド
 
 ```yaml
-			- name: setup hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: latest
+- name: setup hugo
+  uses: peaceiris/actions-hugo@v2
+  with:
+    hugo-version: latest
 
-			- name: build
-        run: hugo --minify
+- name: build
+  run: hugo --minify
 ```
 
 　まず，ランナー上にhugoをインストールします. その後, hugoのビルドを実行します．
@@ -113,11 +113,11 @@ jobs:
 　今回はGitHub Pagesにデプロイします．便利な既存のActionsを利用します．
 
 ```yaml
-			- name: deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
-          publish_dir: ./public
+- name: deploy
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ${{secrets.GITHUB_TOKEN}}
+    publish_dir: ./public
 ```
 
 　パラメータとして渡している `github_token` の `secrets.GITHUB_TOKEN` は何かトークンを別で取得して与えなければいけないというものではなく，ランナーによって自動的に生成されるトークンなので設定する必要は無いです．
