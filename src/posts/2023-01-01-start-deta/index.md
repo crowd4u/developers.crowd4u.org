@@ -210,7 +210,8 @@ async def result(request:Request):
     [https://y0rcw0.deta.dev](https://y0rcw0.deta.dev/) 
 
     無事デプロイできていそうです！
-    <figure><img src='{{ "./result.png" | htmlBaseUrl }}' width="75%" alt="デプロイ結果" ></figure>
+    
+    ![デプロイ結果]({{ "./result.png" | url }})
 
     以上がDeta.shを使ってウェブアプリをデプロイする方法です。
 
@@ -229,9 +230,9 @@ Deta.shのサイトを読んでいると、今後も無料でサービスを提�
 
 ## おまけ
 幣開発チームのリーダーが今回作成したアプリを試してくれたらしいのですが、このようなスクショが送られてきました笑
-<figure>
-    <img src='{{ "./omake.png" | htmlBaseUrl }}' width="75%" alt="おまけ" />
-</figure>
+
+![おまけ]({{ "./omake.png" | url }})
+
 ま、まぁこれ以上悪くならないという意味でもあるので。。。(震え)
 
 ## 参考

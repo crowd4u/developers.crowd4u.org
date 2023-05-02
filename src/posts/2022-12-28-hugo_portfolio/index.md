@@ -99,7 +99,7 @@ myportfolio:$ git submodule add git@github.com:gurusabarish/hugo-profile.git the
 　yamlファイルを適当に編集して「とりあえず出せそうな感じになったな」と思ったら内容が激薄になっていました．
 
 
-<figure><img src='{{ "./portfoliosite.png" | htmlBaseUrl }}' alt="screenshot_of_my_portfolio_site"></figure>
+![screenshot_of_my_portfolio_site]({{ "./portfoliosite.png" | htmlBaseUrl }})
 
 　ローカルでのテストは `hugo server` コマンドでできます． `localhost:1313` でテストサーバーにアクセスできます．実行中にファイルを更新すると自動でリビルドが走って更新されるので便利です．
 
