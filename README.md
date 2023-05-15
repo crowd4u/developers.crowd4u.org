@@ -37,6 +37,8 @@
     - name: アンカーテキスト。リンクの説明に使います。（例: Twitter、portfolio、GitHubなど）
     - link: リンク先です。URL、URIを記載してください。（例: https://github.com/eniehack など。）
 
+avatarは`src/assets/img/avatars/{{id}}.png`に入れてください。
+
 ## 記事の執筆方法
 
 ここでは[mustache構文](http://mustache.github.io/)を用いて説明します。
