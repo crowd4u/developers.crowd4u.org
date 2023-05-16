@@ -44,14 +44,14 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addFilter("dateToRfc3339", pluginRSS.dateToRfc3339);
 
-    eleventyConfig.addShortcode("author_link", (id, text) => {
+    eleventyConfig.addFilter("getAuthorLink", (id) => {
         let path = "/author/" + eleventyConfig.getFilter("slugify")(id);
-        return `<a href="${eleventyConfig.getFilter("htmlBaseUrl")(path)}">${text}</a>`;
+        return eleventyConfig.getFilter("url")(path);
     });
 
-    eleventyConfig.addShortcode("tag_link", (tag) => {
+    eleventyConfig.addFilter("getTagLink", (tag) => {
         let path = "/tag/" + eleventyConfig.getFilter("slugify")(tag);
-        return `<a href="${eleventyConfig.getFilter("htmlBaseUrl")(path)}">${tag}</a>`;
+        return eleventyConfig.getFilter("url")(path);
     });
 
     return {
