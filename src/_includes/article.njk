@@ -27,13 +27,13 @@
                     <time datetime="{{ date.toISOString() }}" itemprop="dateModified">{{ date | readableDate }}</time>
                     <div class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
                         <img src='{{ "/assets/img/avatars/" + author + ".png" | url }}' height="24" itemprop="image" />
-                        <a href='{{ getAuthorLink author }}' itemprop="name">{{authors[author].name}}</a>
+                        <a href='{{ author | getAuthorLink }}' itemprop="name">{{authors[author].name}}</a>
                     </div>
                     <ul class="post-tags">
                         {% for tag in tags %}
                         {% if tag !== "posts" %}
                             <li class="post-tag">
-                                <a href='{{ getTagLink tag }}' itemprop="keywords">{{tag}}</a>
+                                <a href='{{ tag | getTagLink }}' itemprop="keywords">{{tag}}</a>
                             </li>
                         {% endif %}
                         {% endfor %}

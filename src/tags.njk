@@ -7,7 +7,7 @@ ogp_type: "webpage"
     <h1>タグ一覧</h1>
     {% for tag in collections.posts | getAllTags | filterTagList %}
     <ul>
-        <li><a href='{{ getTagLink tag }}'>{{ tag }}</a></li>
+        <li><a href='{{ tag | getTagLink }}'>{{ tag }}</a></li>
     </ul>
     {% endfor %}
 </article>
