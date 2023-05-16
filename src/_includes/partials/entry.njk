@@ -7,7 +7,7 @@
     </div>
     <footer class="entry-footer">
         <time datetime='{{ post.data.date.toISOString() }}'>{{ post.data.date | readableDate }}</span>
-        {% author_link post.data.author, authors[post.data.author]["name"] %}
+        <a href="{{ getAuthorLink post.data.author }}">{{ authors[post.data.author]["name"] }}</a>
     </footer>
     <a href='{{ post.url }}' class="entry-link"></a>
 </article>
