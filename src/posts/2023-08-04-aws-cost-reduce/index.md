@@ -83,7 +83,7 @@ aws application-autoscaling delete-scheduled-action --service-namespace ecs --re
 
 実際に以上の対策の実行後、一日当たりのFargateのコストが明らかに減少しました。
 
-![減ったAWSコスト]({ "./graph.png" | url})
+![減ったAWSコスト]({{ "./graph.png" | url }})
 
 今後、Fargateは更に活用していくことになると思うので、コスト面では気をつけつつ、使いこなしていきたいなと思っています！
 
