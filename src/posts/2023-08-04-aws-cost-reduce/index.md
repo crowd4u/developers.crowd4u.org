@@ -6,6 +6,7 @@ author: gild
 layout: article
 templateEngineOverride: njk,md
 tags:
+  - posts
   - aws
 ---
     
