@@ -5,6 +5,7 @@
 1. Node.jsを用意します（versionはv18以降を想定）
 2. `git clone`とリポジトリへの`cd`
 3. `pnpm i`
+4. `pnpm run dev`で
 
 ## 著者データの作成
 
@@ -47,3 +48,7 @@ avatarは`src/assets/img/avatars/{{id}}.png`に入れてください。
 2. そうすると、`src/posts/YYYY-MM-DD-{{slug名}}/index.md`（以下、`index.md`）が作成されます。
 3. `index.md`の2行目には記事のタイトル、5行目には著者のIDを適宜入力します。
 4. 11行目から記事の内容を書き始めます。
+
+## 注意
+- Tagの`"posts"`は消さないでください
+- 画像は記事を書いているディレクトリ直下に置いたうえで`[image]({{ image.png | url }})`のような形で指定が出来ます
