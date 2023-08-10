@@ -44,7 +44,7 @@ ElastiCache(Memcached)と接続するためにLambdaをVPC内に配置してい�
 
 LambdaはGoに対応しているので、Lambdaでシステムを実行し、APIGatewayでAPIを立てるのが一番良いのかなという話です。
 
-![最初の構成]({{ "./lambda.svg" | url }})
+![最初の構成]({{ "./lambda.png" | url }})
 
 しかし、この構成には問題点が存在し破綻しました。
 
@@ -90,7 +90,7 @@ LambdaはGoに対応しているので、Lambdaでシステムを実行し、API
 3. 軽いシステムなので大してvCPUやメモリを消費しない(最小設定で実行可能)
 4. 2・3の理由からNATを使用するよりコストは抑えられる可能性が高い
 
-![Fargate構成]({{ "./fargate.svg" | url }})
+![Fargate構成]({{ "./fargate.png" | url }})
 
 ここからはSTG環境で使用したタスク定義ファイルを一部使いまわしながら、サクッと実装することが出来ました。
 
