@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "eleventy",
-    "build:prod": "NODE_ENV=production eleventy",
-    "dev": "NODE_ENV=development eleventy --serve"
+    "build:prod": "rm -rf public && NODE_ENV=production eleventy",
+    "dev": "rm -rf public && NODE_ENV=development eleventy --serve"
   },
   "keywords": [],
   "author": "",
