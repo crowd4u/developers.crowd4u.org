@@ -18,6 +18,7 @@ eleventyComputed:
         {% for link in authors[author].links %}
             <li><a href="{{link.link}}" itemprop="sameAs">{{link.name}}</a></li>
         {% endfor %}
+        <li><a href="{{ author | getAuthorLink }}/feed.xml" rel="alternate" type="application/xml+atom">RSS</a></li>
     </ul>
     {% for post in collections.posts | reverse | filterAuthor(author) %}
         {% include './_includes/partials/entry.njk' %}

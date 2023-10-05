@@ -1,0 +1,37 @@
+---
+pagination:
+   data: authors
+   size: 1
+   alias: author
+permalink: "/author/{{author}}/feed.xml"
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base='{{ "/" | htmlBaseUrl }}'>
+  <title>{{ ogp.site_name }}</title>
+  <subtitle>{{ ogp.description }}</subtitle>
+  <link href="{{ permalink | htmlBaseUrl }}" rel="self"/>
+  <link href='{{ "/" | htmlBaseUrl }}' rel="alternate" type="text/html"/>
+  <updated>{{ collections.event | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>{{ "/" | htmlBaseUrl }}</id>
+  <author>
+    <name>{{ authors[author]["name"] }}</name>
+    <uri>https://www.fusioncomplab.org/</uri>
+  </author>
+  {%- for post in collections.posts | reverse | filterAuthor(author) %}
+  {%- set absolutePostUrl = post.url | htmlBaseUrl %}
+  {% if loop.index <= 20 %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}"/>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <author>
+        <name>{{ authors[author]["name"] }}</name>
+        <uri>{{ ("/author/" + post.data.author) | htmlBaseUrl }}</uri>
+    </author>
+    <content xml:lang="{{ metadata.language }}" type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+  </entry>
+  {% endif %}
+  {%- endfor %}
+</feed>
