@@ -1,5 +1,5 @@
 ---
-title: "CeleryのBrokerとResultBackendをElastiCash(Redis)からSQS+DynamoDBに移行した話"
+title: "CeleryのBrokerとResultBackendをElastiCache(Redis)からSQS+DynamoDBに移行した話"
 date: 2024-07-20T12:58:50+09:00
 draft: false
 author: gild
