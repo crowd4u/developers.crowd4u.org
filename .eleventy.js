@@ -45,7 +45,12 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("dateToRfc3339", pluginRSS.dateToRfc3339);
 
     eleventyConfig.addFilter("getAuthorLink", (id) => {
-        let path = "/author/" + eleventyConfig.getFilter("slugify")(id);
+        let path = `/author/${id}`;
+        return eleventyConfig.getFilter("url")(path);
+    });
+
+    eleventyConfig.addFilter("getAuthorAvatarLink", (id) => {
+        let path = `/assets/img/avatars/${id}.png`;
         return eleventyConfig.getFilter("url")(path);
     });
 

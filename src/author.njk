@@ -12,7 +12,7 @@ eleventyComputed:
 
 <article itemscope itemtype="https://schema.org/Person">
     <h1 itemprop="name">{{ authors[author]["name"] }}</h1>
-    <img src='{{ ("/assets/img/avatars/" + authors[author].id + ".png") | url }}' alt="" width="180" itemprop="image">
+    <img src="{{ authors[author].id | getAuthorAvatarLink }}" alt="" width="180" itemprop="image">
     <p itemprop="description">{{ authors[author]["description"] }}</p>
     <ul>
         {% for link in authors[author].links %}
