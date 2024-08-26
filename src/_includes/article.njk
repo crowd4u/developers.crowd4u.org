@@ -26,7 +26,7 @@
                 <div class="post-meta">
                     <time datetime="{{ date.toISOString() }}" itemprop="dateModified">{{ date | readableDate }}</time>
                     <div class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <img src='{{ "/assets/img/avatars/" + author + ".png" | url }}' height="24" itemprop="image" />
+                        <img src='{{ author  | getAuthorAvatarLink }}' height="24" itemprop="image" />
                         <a href='{{ author | getAuthorLink }}' itemprop="name">{{authors[author].name}}</a>
                     </div>
                     <ul class="post-tags">
